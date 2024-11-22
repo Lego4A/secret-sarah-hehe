@@ -5,9 +5,17 @@ const story = [
         responses: ["Okiee!!"],
     },
     {
+        question: "Happy Birthday Misses Sarah!! 🥳🥳",
+        next: true,
+    },
+    {
+        question: "I wanted to make you something and here it is :)",
+        next: true,
+    },
+    {
         question: "How excited are you to see me again? 🙃",
         options: ["Super excited!", "Super excited to hug you!", "Super excited to go get ice cream!"],
-        responses: ["Me too! ❤️", "Hehe 😉", "I bet your favorite flavor is Vanilla"],
+        responses: ["Me too! ❤️", "Hehe 😉", "I bet your favorite flavor is Vanilla (I bet I got it right)"],
     },
     {
         question: "This was me on August 29th, I had no clue what Germany was going to bring me.",
@@ -64,6 +72,10 @@ const story = [
         image: "40647_alt3.png"
     },
     {
+        question: "Now, 3 months later.",
+        next: true,
+    },
+    {
         question: "I have a question for you... 👉👈",
         next: true,
     },
@@ -77,7 +89,27 @@ const story = [
     },
     {
         question: "I would like to fly you out to the US for prom! ✈️❤️",
-    }
+        next: true,
+    },
+    {
+        question: "I'm being fr haha, but when you have time, I would like to talk with you about making this into a reality.",
+        next: true,
+    },
+    {
+        question: "Well enjoy your birthday Sarah. Eat a lot of ice cream for me cutie. 🥰",
+        next: true,
+    },
+    {
+        question: "I'll write you later, bye bye.",
+        next: true,
+    },
+    {
+        question: "Pssst",
+        next: true,
+    },
+    {
+        question: "Love you so much Sarah 🥰🥰",
+    },
 ];
 
 let currentStep = 0;
