@@ -12,19 +12,23 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
         import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBWHJbM7cTJ0oJGs686k4pEWvcJCnZ3g8k",
-            authDomain: "sarah-promposal-212a.firebaseapp.com",
-            projectId: "sarah-promposal-212a",
-            storageBucket: "sarah-promposal-212a.appspot.com",
-            messagingSenderId: "810538275538",
-            appId: "1:810538275538:web:331b46c73bcf0f1e39d30b",
-            measurementId: "G-7YHLVDF40Q"
-        };
+        import { initializeApp } from "firebase/app";
+        
+        import dotenv from "dotenv";
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
+        dotenv.config();
+
+        const firebaseConfig = {
+            apiKey: process.env.FIREBASE_API_KEY,
+            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+            projectId: process.env.FIREBASE_PROJECT_ID,
+            storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+            appId: process.env.FIREBASE_APP_ID,
+            measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+};
+
+const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
         // Redirect if already logged in
