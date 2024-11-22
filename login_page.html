@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles_login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <form>
+            <h1>Login</h1>
+            <div class="form-row">
+                <input type="email" id="emailInput" class="form-input" placeholder="example@email.com">
+                <label for="emailInput" class="form-label">Email</label>
+            </div>
+            <div class="form-row">
+                <input type="password" id="passwordInput" class="form-input" placeholder="password">
+                <label for="passwordInput" class="form-label">Password</label>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBWHJbM7cTJ0oJGs686k4pEWvcJCnZ3g8k",
+            authDomain: "sarah-promposal-212a.firebaseapp.com",
+            projectId: "sarah-promposal-212a",
+            storageBucket: "sarah-promposal-212a.appspot.com",
+            messagingSenderId: "810538275538",
+            appId: "1:810538275538:web:331b46c73bcf0f1e39d30b",
+            measurementId: "G-7YHLVDF40Q"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Login form handler
+        document.querySelector("form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("emailInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            try {
+                // Authenticate the user
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Welcome Misses Sarah 🥰");
+                window.location.href = "index.html"; // Redirect to index.html
+            } catch (error) {
+                alert("Error: " + error.message);
+            }
+        });
+    </script>
+</body>
+
+</html>
