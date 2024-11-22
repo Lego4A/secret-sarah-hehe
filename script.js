@@ -12,17 +12,17 @@ const story = [
     {
         question: "This was me on August 29th, I had no clue what Germany was going to bring me.",
         next: true,
-        image: "images/IMG_0209.png"
+        image: "IMG_0209.png"
     },
     {
         question: "I landed at Chicago then took my connecting flight to Munich, Germany.",
         next: true,
-        image: "images/IMG_0223.png"
+        image: "IMG_0223.png"
     },
     {
         question: "There I was, I landed and was in Germany. (I couldn't believe it haha)",
         next: true,
-        image: "images/IMG_0228.png"
+        image: "IMG_0228.png"
     },
     {
         question: "After a sweaty 2 hour train ride, we made it to the hostel.",
@@ -56,12 +56,12 @@ const story = [
     {
         question: "I bought 2 sets, #40647 and #40460.",
         next: true,
-        image: "images/40460_alt1.png"
+        image: "40460_alt1.png"
     },
     {
         question: "I bought 2 sets, #40647 and #40460.",
         next: true,
-        image: "images/40647_alt3.png"
+        image: "40647_alt3.png"
     },
     {
         question: "I have a question for you... 👉👈",
