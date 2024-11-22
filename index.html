@@ -10,7 +10,7 @@
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
         // Firebase configuration
         const firebaseConfig = {
@@ -29,14 +29,16 @@
 
         // Redirect if already logged in
         onAuthStateChanged(auth, (user) => {
-            if (user) {
-                window.location.href = "central.html"; // Redirect to central.html
+            if (user && sessionStorage.getItem("isSessionActive")) {
+                // If user is logged in and session is active, stay on central.html
+                window.location.href = "central.html";
             }
         });
 
-        // Login handler
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.querySelector("form");
+
+            // Login handler
             form.addEventListener("submit", async (event) => {
                 event.preventDefault();
 
@@ -45,12 +47,27 @@
 
                 try {
                     await signInWithEmailAndPassword(auth, email, password);
+                    sessionStorage.setItem("isSessionActive", "true"); // Start session
                     alert("Welcome Misses Sarah 🥰");
-                    window.location.href = "central.html"; // Redirect on successful login
+                    window.location.href = "central.html"; // Redirect to central.html
                 } catch (error) {
-                    alert("Error: " + error.message); // Display error message
+                    alert("Error: " + error.message);
                 }
             });
+
+            // Logout when the page is reloaded or closed
+            window.addEventListener("beforeunload", () => {
+                sessionStorage.removeItem("isSessionActive");
+            });
+
+            // Auto-logout after 1 minute and 30 seconds
+            setTimeout(() => {
+                sessionStorage.removeItem("isSessionActive");
+                signOut(auth).then(() => {
+                    alert("Session has expired. Please log in again.");
+                    window.location.href = "index.html";
+                });
+            }, 90000); // 90000 ms = 1 minute 30 seconds
         });
     </script>
 </head>
